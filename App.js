@@ -7,15 +7,15 @@ import Home from './screens/HomeScreen/HomeScreen';
 import Settings from './Settings';
 import { Ionicons } from '@expo/vector-icons';
 
+import HomeStackScreen from './screens/HomeScreen/HomeStackScreen';
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 
 
 export default function App() {
 
   const BottomTab = createBottomTabNavigator();
-  const Stack = createNativeStackNavigator();
 
 
 

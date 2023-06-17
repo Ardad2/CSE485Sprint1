@@ -5,9 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 function BehaviorItem(props) {
 
     const navigation = useNavigation();
-    
+
     function pressHandler() {
-      navigation.navigate();
+      console.log("Hello");
     }
     
 
@@ -15,7 +15,7 @@ function BehaviorItem(props) {
         <View style={styles.behaviorItem}>
         <Pressable 
         android_ripple ={{color:'#210644'}}
-        onPress={props.onDeleteItem.bind(this, props.id)}
+        onPress={props.onPress}
         style={({pressed}) => pressed && styles.pressedItem}
         > 
         <Text style={styles.behaviorText}>{props.text}</Text>

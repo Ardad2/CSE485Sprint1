@@ -14,18 +14,22 @@ import BehaviorInput from '../../components/BehaviorInput';
 import IconButton from '../../components/IconButton';
 
 import BehaviorDetailScreen from './BehaviorDetailScreen';
+import BehaviorFormScreen from './BehaviorFormScreen';
 
 import HomeScreen from './HomeScreen';
-import BehaviorDetailScreen from './BehaviorDetailScreen';
 
 
 const HomeStack = createStackNavigator();
-function HomeStackScreen() {
+
+export default function HomeStackScreen() {
  return (
    <HomeStack.Navigator initialRouteName="Home">
 
-    <HomeStack.Screen name="Home" component={HomeScreen} />
-     <HomeStack.Screen name="Behavior Detail Screen" component={DetailsScreen} />
+    <HomeStack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+     <HomeStack.Screen name="BehaviorDetailScreen" component={BehaviorDetailScreen} />
+     <HomeStack.Screen name="BehaviorFormScreen" component={BehaviorFormScreen} />
    </HomeStack.Navigator>
   );
+  
 }
+

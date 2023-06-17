@@ -17,7 +17,7 @@ import BehaviorDetailScreen from './BehaviorDetailScreen';
 
 const HomeStack = createStackNavigator();
 
-export default function Home() {
+export default function HomeScreen({navigation}) {
 
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [courseBehaviors, setCourseBehaviors] = useState([]);
@@ -41,10 +41,43 @@ export default function Home() {
     } );
   }
 
+  function pressHandler() {
+    navigation.navigate("BehaviorDetailScreen", { child : "Hello",});
+  }
+
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component = "HomeScreen"/>
-    </HomeStack.Navigator>
+    <>
+    <StatusBar style="light"/>
+    <View style={styles.appContainer}>
+    <BehaviorInput
+     visible={modalIsVisible} 
+     onAddBehavior={addBehaviorHandler} 
+     onCancel={endAddBehaviorHandler}
+     />
+     <View> 
+       <Text style={styles.headingText}>Welcome back John! What did you do today?</Text>
+     </View>
+
+     <View style={styles.plusButton}>  
+    <IconButton icon="add-circle-outline" color="black" onPress={startAddBehaviorHandler} />
+    </View>  
+    
+      <View style={styles.behaviorsContainer}>
+        <FlatList data={courseBehaviors} renderItem = {itemData => {
+          return <BehaviorItem 
+          text={itemData.item.text} 
+          id = {itemData.item.id}
+          onDeleteItem={deleteBehaviorHandler}
+          onPress={pressHandler}
+          />
+
+        }}
+        keyExtractor={(item,index) => {return item.id}} 
+        alwaysBounceVertical={true}
+        /> 
+        </View>
+      </View>
+        </>
   );
 }
 
