@@ -1,4 +1,4 @@
-import {} from 'react-native'
+import {Text} from 'react-native'
 
 function BehaviorDetailScreen( {child} )
 {

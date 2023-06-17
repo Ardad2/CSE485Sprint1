@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+
 
 import { 
   StyleSheet,  
@@ -7,11 +9,15 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-import BehaviorItem from './components/BehaviorItem';
-import BehaviorInput from './components/BehaviorInput';
-import IconButton from './components/IconButton';
+import BehaviorItem from '../../components/BehaviorItem';
+import BehaviorInput from '../../components/BehaviorInput';
+import IconButton from '../../components/IconButton';
 
-export default function App() {
+import BehaviorDetailScreen from './BehaviorDetailScreen';
+
+const HomeStack = createStackNavigator();
+
+export default function Home() {
 
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [courseBehaviors, setCourseBehaviors] = useState([]);
@@ -36,37 +42,9 @@ export default function App() {
   }
 
   return (
-    <>
-    <StatusBar style="light"/>
-    <View style={styles.appContainer}>
-    <BehaviorInput
-     visible={modalIsVisible} 
-     onAddBehavior={addBehaviorHandler} 
-     onCancel={endAddBehaviorHandler}
-     />
-     <View> 
-       <Text style={styles.headingText}>Welcome back John! What did you do today?</Text>
-     </View>
-
-     <View style={styles.plusButton}>  
-    <IconButton icon="add-circle-outline" color="black" onPress={startAddBehaviorHandler} />
-    </View>  
-    
-      <View style={styles.behaviorsContainer}>
-        <FlatList data={courseBehaviors} renderItem = {itemData => {
-          return <BehaviorItem 
-          text={itemData.item.text} 
-          id = {itemData.item.id}
-          onDeleteItem={deleteBehaviorHandler}
-          />
-
-        }}
-        keyExtractor={(item,index) => {return item.id}} 
-        alwaysBounceVertical={true}
-        /> 
-        </View>
-      </View>
-        </>
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component = "HomeScreen"/>
+    </HomeStack.Navigator>
   );
 }
 

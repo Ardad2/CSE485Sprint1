@@ -1,17 +1,22 @@
+import 'react-native-gesture-handler';
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import Home from './Home';
+import Home from './screens/HomeScreen/HomeScreen';
 import Settings from './Settings';
 import { Ionicons } from '@expo/vector-icons';
 
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 
 export default function App() {
 
   const BottomTab = createBottomTabNavigator();
+  const Stack = createNativeStackNavigator();
+
 
 
   return (
@@ -20,7 +25,7 @@ export default function App() {
 
         <BottomTab.Screen 
         name="Home" 
-        component={Home}
+        component={HomeStackScreen}
         options = {{ tabBarLabel: 'Today', tabBarIcon: ({color, size}) => (
           <Ionicons name="home-outline" size="25px"/>
         ), }} 

@@ -1,7 +1,14 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 function BehaviorItem(props) {
 
+    const navigation = useNavigation();
+    
+    function pressHandler() {
+      navigation.navigate();
+    }
     
 
     return (
