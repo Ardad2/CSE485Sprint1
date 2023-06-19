@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
@@ -14,7 +14,6 @@ import BehaviorInput from '../../components/BehaviorInput';
 import IconButton from '../../components/IconButton';
 
 import BehaviorDetailScreen from './BehaviorDetailScreen';
-import { useEffect } from 'react/cjs/react.production.min';
 
 const HomeStack = createStackNavigator();
 
@@ -42,7 +41,7 @@ export default function HomeScreen({navigation}) {
   }
   
   function addBehaviorHandler(enteredBehaviorText) {
-    setCourseBehaviors(currentCourseBehaviors => [...currentCourseBehaviors, {text: enteredBehaviorText, id: Math.random().toString(), date: {date}, icon: "Hello"}       ]);
+    setCourseBehaviors(currentCourseBehaviors => [...currentCourseBehaviors, {text: enteredBehaviorText, id: Math.random().toString(), date: date, icon: "Hello"}       ]);
   endAddBehaviorHandler();
   }
 
