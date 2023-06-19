@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import {moment} from 'moment';
 
 
 import { 
@@ -15,10 +14,21 @@ import BehaviorInput from '../../components/BehaviorInput';
 import IconButton from '../../components/IconButton';
 
 import BehaviorDetailScreen from './BehaviorDetailScreen';
+import { useEffect } from 'react/cjs/react.production.min';
 
 const HomeStack = createStackNavigator();
 
 export default function HomeScreen({navigation}) {
+
+  const [ date, setDate ] = useState(null);
+
+  useEffect( () => {
+    let today = new Date();
+    let date = today.getDate()+'.'+(today.getMonth()+1)+'.'+today.getFullYear();
+    setDate(date);
+  }, []);
+
+
 
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [courseBehaviors, setCourseBehaviors] = useState([]);
@@ -32,7 +42,7 @@ export default function HomeScreen({navigation}) {
   }
   
   function addBehaviorHandler(enteredBehaviorText) {
-    setCourseBehaviors(currentCourseBehaviors => [...currentCourseBehaviors, {text: enteredBehaviorText, id: Math.random().toString(), date: moment().format("DD/MM/YYYY"), icon: "Hello"}       ]);
+    setCourseBehaviors(currentCourseBehaviors => [...currentCourseBehaviors, {text: enteredBehaviorText, id: Math.random().toString(), date: {date}, icon: "Hello"}       ]);
   endAddBehaviorHandler();
   }
 
