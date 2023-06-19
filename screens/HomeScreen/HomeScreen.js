@@ -51,8 +51,8 @@ export default function HomeScreen({navigation}) {
     } );
   }
 
-  function pressHandler() {
-    navigation.navigate("BehaviorDetailScreen", { child : "Hello",});
+  function pressHandler(text, date, icon) {
+    navigation.navigate("BehaviorDetailScreen", { child : "Hello", text: text, date: date, icon: icon});
   }
 
   return (

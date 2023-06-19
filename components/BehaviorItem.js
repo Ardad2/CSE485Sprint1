@@ -15,7 +15,7 @@ function BehaviorItem(props) {
         <View style={styles.behaviorItem}>
         <Pressable 
         android_ripple ={{color:'#210644'}}
-        onPress={props.onPress}
+        onPress={props.onPress(props.text, props.date, props.icon)}
         style={({pressed}) => pressed && styles.pressedItem}
         > 
         <Text style={styles.behaviorText}>{props.text}</Text>
