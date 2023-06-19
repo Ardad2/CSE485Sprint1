@@ -3,7 +3,7 @@
 ## Product Backlogs
 
 1. Local storage for the user behaviors
-2. Detail screen for every behavior after tapping on it
+2. Detail screen for every behavior after tapping on it (Kind of Done) 
 3. List of predfined behaviors for the user to pick from the KARE model
 4. A form for creating behaviors along with details
 5. List of behaviors on the home screen with dates and icons.

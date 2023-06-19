@@ -19,6 +19,7 @@ function BehaviorItem(props) {
         style={({pressed}) => pressed && styles.pressedItem}
         > 
         <Text style={styles.behaviorText}>{props.text}</Text>
+        <Text style={styles.behaviorText}>{props.date}</Text>
         </Pressable>
         </View>
     );

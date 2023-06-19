@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import {moment} from 'moment';
 
 
 import { 
@@ -31,7 +32,7 @@ export default function HomeScreen({navigation}) {
   }
   
   function addBehaviorHandler(enteredBehaviorText) {
-    setCourseBehaviors(currentCourseBehaviors => [...currentCourseBehaviors, {text: enteredBehaviorText, id: Math.random().toString() }       ]);
+    setCourseBehaviors(currentCourseBehaviors => [...currentCourseBehaviors, {text: enteredBehaviorText, id: Math.random().toString(), date: moment().format("DD/MM/YYYY"), icon: "Hello"}       ]);
   endAddBehaviorHandler();
   }
 
@@ -67,6 +68,8 @@ export default function HomeScreen({navigation}) {
           return <BehaviorItem 
           text={itemData.item.text} 
           id = {itemData.item.id}
+          date={itemData.item.date}
+          icon={itemData.item.icon}
           onDeleteItem={deleteBehaviorHandler}
           onPress={pressHandler}
           />
