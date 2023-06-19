@@ -7,7 +7,7 @@ function BehaviorItem(props) {
     const navigation = useNavigation();
 
     function pressHandler() {
-      console.log("Hello");
+      props.onPress(props.text, props.date, props.icon)
     }
     
 
@@ -15,7 +15,7 @@ function BehaviorItem(props) {
         <View style={styles.behaviorItem}>
         <Pressable 
         android_ripple ={{color:'#210644'}}
-        onPress={props.onPress(props.text, props.date, props.icon)}
+        onPress={pressHandler}
         style={({pressed}) => pressed && styles.pressedItem}
         > 
         <Text style={styles.behaviorText}>{props.text}</Text>
