@@ -26,7 +26,7 @@ export default function App() {
         <BottomTab.Screen 
         name="Home" 
         component={HomeStackScreen}
-        options = {{ tabBarLabel: 'Today', tabBarIcon: ({color, size}) => (
+        options = {{ headerShown: false, tabBarLabel: 'Today', tabBarIcon: ({color, size}) => (
           <Ionicons name="home-outline" size="25px"/>
         ), }} 
         />
