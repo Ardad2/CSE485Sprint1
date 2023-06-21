@@ -1,15 +1,83 @@
-import {View, Text} from 'react-native'
+import { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, Button, Modal, Image} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
 
 export default function BehaviorFormScreen( {route, navigation} )
 {
-    const child = route.params.child;
+
+        const child = route.params.child;
+        const text = route.params.text;
+        const date = route.params.date;
+        const icon = route.params.icon
+
+    const [enteredBehaviorText, setEnteredBehaviorText] = useState('');
+
+    function behaviorInputHandler(enteredText) {
+        setEnteredBehaviorText(enteredText);
+      };
+
+      function addBehaviorHandler() {
+          route.params.onAddBehavior(enteredBehaviorText);
+          setEnteredBehaviorText('');
+      }
+
+      function cancelBehaviorHandler() {
+        navigation.goBack();
+      }
 
     return (
-        <View> 
-        <Text>{child}</Text>
-        </View>
-    )
-}
+        <View style ={styles.inputContainer}>
+        <TextInput 
+        style={styles.textInput} 
+        placeholder="What did you do today?"
+        
+        //Note if it was goalInputHandler() it would get executed as soon as React starts.
 
+         onChangeText={behaviorInputHandler}
+         value={enteredBehaviorText}
+         />
+         <View style={styles.buttonContainer}>
+             <View style={styles.button} >
+                <Button title="Add Behavior" onPress={addBehaviorHandler} color="black"/>
+            </View>
+            <View style={styles.button}>
+                <Button title="Cancel" onPress={cancelBehaviorHandler} color="black"/>
+            </View>
+        </View>
+      </View>
+    )
+};
+
+const styles = StyleSheet.create({
+    inputContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 16,
+      backgroundColor: 'white'
+    },
+    image: {
+        width: 100,
+        height: 100,
+        margin: 20
+    },
+    textInput: {
+      borderWidth: 1,
+      borderColor: '#e4d0ff',
+      backgroundColor: '#e4d0ff',
+      color: '#120438',
+      borderRadius: 6,
+      width: '100%',
+      padding: 16
+    },
+    buttonContainer: {
+        marginTop: 16,
+        flexDirection: "row",
+    },
+    button: {
+        width: 100,
+        marginHorizontal: 8
+    }
+  });
+  

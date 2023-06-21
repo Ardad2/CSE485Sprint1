@@ -26,7 +26,7 @@ export default function HomeStackScreen() {
    <HomeStack.Navigator initialRouteName="Home" options={{headerShown: false}}>
 
     <HomeStack.Screen name="Home" component={HomeScreen} options={{ }} />
-     <HomeStack.Screen name="BehaviorDetailScreen" component={BehaviorDetailScreen} options={{  }} />
+     <HomeStack.Screen name="BehaviorDetailScreen" component={BehaviorDetailScreen} options={{  headerTitle: "", tabBarStyle: { display: "none" }, }} />
      <HomeStack.Screen name="BehaviorFormScreen" component={BehaviorFormScreen} />
    </HomeStack.Navigator>
   );

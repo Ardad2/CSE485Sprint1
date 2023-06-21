@@ -14,6 +14,7 @@ import BehaviorInput from '../../components/BehaviorInput';
 import IconButton from '../../components/IconButton';
 
 import BehaviorDetailScreen from './BehaviorDetailScreen';
+import BehaviorFormScreen from './BehaviorFormScreen';
 
 const HomeStack = createStackNavigator();
 
@@ -33,11 +34,19 @@ export default function HomeScreen({navigation}) {
   const [courseBehaviors, setCourseBehaviors] = useState([]);
 
   function startAddBehaviorHandler() {
-    setModalIsVisible(true);
+   //setModalIsVisible(true);
+
+   <BehaviorInput
+   onAddBehavior={addBehaviorHandler} 
+   />
+
+   navigation.navigate("BehaviorFormScreen", { onAddBehavior: addBehaviorHandler} )
+
   }
 
   function endAddBehaviorHandler() {
-    setModalIsVisible(false);
+   // setModalIsVisible(false);
+   
   }
   
   function addBehaviorHandler(enteredBehaviorText) {
