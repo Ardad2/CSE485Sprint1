@@ -3,12 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const behaviorsSlice = createSlice({
     name: 'behaviors',
     initialState: {
-        behaviors: [{
-            id: Math.random().toString(),
-            text: "Hell",
-            date: "test",
-            icon: "Hello"
-        }],   
+        behaviors: [],   
     },
 
     reducers: {
