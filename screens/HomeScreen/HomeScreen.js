@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { useSelector, dispatch } from 'react-redux';
 
 import { 
   StyleSheet,  
@@ -19,6 +20,9 @@ import BehaviorFormScreen from './BehaviorFormScreen';
 const HomeStack = createStackNavigator();
 
 export default function HomeScreen({navigation}) {
+
+  const behaviorList = useSelector((state) => state.behaviors.behaviors);
+
 
   const [ date, setDate ] = useState(null);
 
@@ -82,7 +86,7 @@ export default function HomeScreen({navigation}) {
     </View>  
     
       <View style={styles.behaviorsContainer}>
-        <FlatList data={courseBehaviors} renderItem = {itemData => {
+        <FlatList data={behaviorList} renderItem = {itemData => {
           return <BehaviorItem 
           text={itemData.item.text} 
           id = {itemData.item.id}

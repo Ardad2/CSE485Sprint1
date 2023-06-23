@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Modal, Image} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useSelector, dispatch } from 'react-redux';
+import { addBehavior, removeBehavior } from '../../store/redux/behaviors';
 
 
 export default function BehaviorFormScreen( {route, navigation} )
 {
 
+  const [ date, setDate ] = useState(null);
+
+  useEffect( () => {
+    let today = new Date();
+    let date = today.getDate()+'.'+(today.getMonth()+1)+'.'+today.getFullYear();
+    setDate(date);
+  }, []);
         const behaviorList = useSelector((state) => state.behaviors.behaviors);
 
         const child = route.params.child;
@@ -20,9 +28,23 @@ export default function BehaviorFormScreen( {route, navigation} )
         setEnteredBehaviorText(enteredText);
       };
 
+      function addBehaviorHandler(enteredBehaviorText) {
+        setCourseBehaviors(currentCourseBehaviors => [...currentCourseBehaviors, {text: enteredBehaviorText, id: Math.random().toString(), date: date, icon: "Hello"}       ]);
+      endAddBehaviorHandler();
+      }
+
       function addBehaviorHandler() {
-          route.params.onAddBehavior(enteredBehaviorText);
-          setEnteredBehaviorText('');
+        //  route.params.onAddBehavior(enteredBehaviorText);
+         // setEnteredBehaviorText('');
+         dispatch(addBehavior(
+           {
+             id: Math.random().toString(),
+             text: enteredBehaviorText,
+             date: date,
+             icon: "Hello"
+           }
+         ))
+
       }
 
       function cancelBehaviorHandler() {
