@@ -39,12 +39,9 @@ export default function HomeScreen({navigation}) {
 
   function startAddBehaviorHandler() {
    //setModalIsVisible(true);
+   navigation.navigate("BehaviorListScreen")
 
-   <BehaviorInput
-   onAddBehavior={addBehaviorHandler} 
-   />
-
-   navigation.navigate("BehaviorFormScreen", { onAddBehavior: addBehaviorHandler} )
+  // navigation.navigate("BehaviorFormScreen", { onAddBehavior: addBehaviorHandler} )
 
   }
 

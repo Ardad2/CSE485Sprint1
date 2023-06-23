@@ -15,6 +15,7 @@ import IconButton from '../../components/IconButton';
 
 import BehaviorDetailScreen from './BehaviorDetailScreen';
 import BehaviorFormScreen from './BehaviorFormScreen';
+import BehaviorListScreen from './BehaviorListScreen';
 
 import HomeScreen from './HomeScreen';
 
@@ -28,6 +29,7 @@ export default function HomeStackScreen() {
     <HomeStack.Screen name="Home" component={HomeScreen} options={{ }} />
      <HomeStack.Screen name="BehaviorDetailScreen" component={BehaviorDetailScreen} options={{  headerTitle: "", tabBarStyle: { display: "none" }, }} />
      <HomeStack.Screen name="BehaviorFormScreen" component={BehaviorFormScreen} />
+     <HomeStack.Screen name="BehaviorListScreen" component={BehaviorListScreen} />
    </HomeStack.Navigator>
   );
   
