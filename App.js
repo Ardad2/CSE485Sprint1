@@ -9,6 +9,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import HomeStackScreen from './screens/HomeScreen/HomeStackScreen';
 
+import { Provider } from 'react-redux';
+import { store } from './store/redux/store';
 
 
 
@@ -20,6 +22,7 @@ export default function App() {
 
 
   return (
+    <Provider store={store}> 
     <NavigationContainer>
       <BottomTab.Navigator initialRouteName="Home" >
 
@@ -28,7 +31,11 @@ export default function App() {
         component={HomeStackScreen}
         options = {{ headerShown: false, tabBarLabel: 'Today', tabBarIcon: ({color, size}) => (
           <Ionicons name="home-outline" size="25px"/>
-        ), }} 
+        ), 
+      
+      
+      
+      }} 
         />
         <BottomTab.Screen 
         name="Habit Stat" 
@@ -60,5 +67,7 @@ export default function App() {
         />
       </BottomTab.Navigator>
     </NavigationContainer>
+
+    </Provider>
   );
 }

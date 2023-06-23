@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Modal, Image} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 
 export default function BehaviorFormScreen( {route, navigation} )
 {
+
+        const behaviorList = useSelector((state) => state.behaviors.behaviors);
 
         const child = route.params.child;
         const text = route.params.text;
@@ -39,11 +42,9 @@ export default function BehaviorFormScreen( {route, navigation} )
          />
          <View style={styles.buttonContainer}>
              <View style={styles.button} >
-                <Button title="Add Behavior" onPress={addBehaviorHandler} color="black"/>
+                <Button title="Submit" onPress={addBehaviorHandler} color="black"/>
             </View>
-            <View style={styles.button}>
-                <Button title="Cancel" onPress={cancelBehaviorHandler} color="black"/>
-            </View>
+
         </View>
       </View>
     )
