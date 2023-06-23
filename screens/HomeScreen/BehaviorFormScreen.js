@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, Button, Modal, Image} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, dispatch } from 'react-redux';
@@ -19,7 +19,7 @@ export default function BehaviorFormScreen( {route, navigation} )
 
         const child = route.params.child;
         const text = route.params.text;
-        const date = route.params.date;
+        //const date = route.params.date;
         const icon = route.params.icon
 
     const [enteredBehaviorText, setEnteredBehaviorText] = useState('');
@@ -28,10 +28,10 @@ export default function BehaviorFormScreen( {route, navigation} )
         setEnteredBehaviorText(enteredText);
       };
 
-      function addBehaviorHandler(enteredBehaviorText) {
+    /*  function addBehaviorHandler(enteredBehaviorText) {
         setCourseBehaviors(currentCourseBehaviors => [...currentCourseBehaviors, {text: enteredBehaviorText, id: Math.random().toString(), date: date, icon: "Hello"}       ]);
       endAddBehaviorHandler();
-      }
+      }*/
 
       function addBehaviorHandler() {
         //  route.params.onAddBehavior(enteredBehaviorText);
@@ -43,7 +43,9 @@ export default function BehaviorFormScreen( {route, navigation} )
              date: date,
              icon: "Hello"
            }
-         ))
+         ));
+
+         navigation.goBack();
 
       }
 

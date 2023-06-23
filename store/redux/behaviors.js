@@ -3,12 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 const behaviorsSlice = createSlice({
     name: 'behaviors',
     initialState: {
-        behaviors: [],   
+        behaviors: [{
+            id: Math.random().toString(),
+            text: "Hell",
+            date: "test",
+            icon: "Hello"
+        }],   
     },
 
     reducers: {
         addBehavior: (state, action) => {
-            state.behaviors.push(action.payload.id);
+            state.behaviors.push(action.payload);
         },
         removeBehavior: (state, action) => {
             state.behaviors.splice(state.behaviors.indexOf(action.payload.id), 1);
