@@ -28,8 +28,8 @@ const data = [
 export default function BehaviorListScreen( {route, navigation} )
 {
     return (
-      <View> 
-        <Text> Section List Exmaple </Text>
+      <View style={styles.container_style} > 
+        <Text style={styles.header} > Section List Exmaple </Text>
         <SectionList sections={data} renderItem = { ({item}) => <Text> {item}</Text>}
         renderSectionHeader={({section})  => <Text> {section.title} </Text>} 
         keyExtractor={(item, index) => index} />
@@ -39,34 +39,23 @@ export default function BehaviorListScreen( {route, navigation} )
 };
 
 const styles = StyleSheet.create({
-    inputContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 16,
-      backgroundColor: 'white'
-    },
-    image: {
-        width: 100,
-        height: 100,
-        margin: 20
-    },
-    textInput: {
-      borderWidth: 1,
-      borderColor: '#e4d0ff',
-      backgroundColor: '#e4d0ff',
-      color: '#120438',
-      borderRadius: 6,
-      width: '100%',
-      padding: 16
-    },
-    buttonContainer: {
-        marginTop: 16,
-        flexDirection: "row",
-    },
-    button: {
-        width: 100,
-        marginHorizontal: 8
-    }
-  });
+  container_style: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item_style: {
+    backgroundColor: '#B591FF',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    
+  },header: {
+    textAlign: 'center',
+    backgroundColor: '#B2C2D2',
+    padding: 20,
+    fontSize: 20,
+   
+  }
+});
+
   
