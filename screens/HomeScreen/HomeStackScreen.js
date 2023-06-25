@@ -24,9 +24,9 @@ const HomeStack = createStackNavigator();
 
 export default function HomeStackScreen() {
  return (
-   <HomeStack.Navigator initialRouteName="Home" options={{headerShown: false}}>
+   <HomeStack.Navigator initialRouteName="HomeScreen" options={{headerShown: false}}>
 
-    <HomeStack.Screen name="Home" component={HomeScreen} options={{ }} />
+    <HomeStack.Screen name="HomeScreen" component={HomeScreen} options={{ }} />
      <HomeStack.Screen name="BehaviorDetailScreen" component={BehaviorDetailScreen} options={{  headerTitle: "", tabBarStyle: { display: "none" }, }} />
      <HomeStack.Screen name="BehaviorFormScreen" component={BehaviorFormScreen} />
      <HomeStack.Screen name="BehaviorListScreen" component={BehaviorListScreen} options={{ headerTitle: "New Behavior"}} />

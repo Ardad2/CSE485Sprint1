@@ -20,11 +20,8 @@ export default function BehaviorFormScreen( {route, navigation} )
         const behaviorList = useSelector((state) => state.behaviors.behaviors);
 
         const behaviorName = route.params.behaviorName;
-        const isNew = (behaviorName == "New")
 
     const [enteredBehaviorText, setEnteredBehaviorText] = useState('');
-
-    setEnteredBehaviorText(behaviorName);
 
     function behaviorInputHandler(enteredText) {
         setEnteredBehaviorText(enteredText);
@@ -47,7 +44,7 @@ export default function BehaviorFormScreen( {route, navigation} )
            }
          ));
 
-         navigation.navigate("Home");
+         navigation.navigate("HomeScreen");
 
       }
 
@@ -57,7 +54,7 @@ export default function BehaviorFormScreen( {route, navigation} )
 
     return (
         <View style ={styles.inputContainer}>
-          { isNew && (<TextInput 
+         { (behaviorName == "New") && (<TextInput 
         style={styles.textInput} 
         placeholder={behaviorName}
         defaultValue={behaviorName}
@@ -65,7 +62,12 @@ export default function BehaviorFormScreen( {route, navigation} )
          onChangeText={behaviorInputHandler}
          value={enteredBehaviorText}
          />)
-          }
+         }
+        { (behaviorName != "New") && (
+          <Text>{behaviorName}</Text>
+         ) }
+
+
 
          <View style={styles.buttonContainer}>
              <View style={styles.button} >
