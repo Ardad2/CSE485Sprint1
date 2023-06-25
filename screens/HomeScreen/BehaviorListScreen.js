@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, Modal, Image, SectionList, StatusBar, TouchableOpaciy} from 'react-native'
+import { View, Text, StyleSheet, TextInput, Button, Modal, Image, SectionList, StatusBar, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, dispatch , useDispatch} from 'react-redux';
 import { addBehavior, removeBehavior } from '../../store/redux/behaviors';
@@ -27,11 +27,25 @@ const data = [
 
 export default function BehaviorListScreen( {route, navigation} )
 {
+
+  function startAddBehaviorHandler(behaviorName) {
+    navigation.navigate("BehaviorFormScreen", { behaviorName: behaviorName} )
+    //console.log("Test");
+   }
     return (
       <View style={styles.container_style} > 
              
-
-        <SectionList sections={data} renderItem = { ({item}) => (<TouchableOpacity onPress={() => console.log("Clicked on item")}> <Text style={styles.item_style}> {item}</Text></TouchableOpacity>)}
+{// (<TouchableOpacity onPress={() => console.log("Clicked on item")}> <Text style={styles.item_style}> {item}</Text></TouchableOpacity>)} 
+}
+        <SectionList sections={data} 
+        renderItem = { ({item}) => ( 
+          <TouchableOpacity onPress={
+            //startAddBehaviorHandler(item.toString())
+            startAddBehaviorHandler
+          }> 
+        <Text style={styles.item_style}> {item}</Text>
+        </TouchableOpacity>
+        )}
         renderSectionHeader={({section})  => <Text style={styles.section_style}> {section.title} </Text>} 
         keyExtractor={(item, index) => index} />
 

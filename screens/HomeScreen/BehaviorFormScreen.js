@@ -19,10 +19,7 @@ export default function BehaviorFormScreen( {route, navigation} )
   }, []);
         const behaviorList = useSelector((state) => state.behaviors.behaviors);
 
-        const child = route.params.child;
-        const text = route.params.text;
-        //const date = route.params.date;
-        const icon = route.params.icon
+        const behaviorName = route.params.behaviorName;
 
     const [enteredBehaviorText, setEnteredBehaviorText] = useState('');
 
@@ -60,7 +57,7 @@ export default function BehaviorFormScreen( {route, navigation} )
         <TextInput 
         style={styles.textInput} 
         placeholder="What did you do today?"
-        
+        value={behaviorName}
         //Note if it was goalInputHandler() it would get executed as soon as React starts.
 
          onChangeText={behaviorInputHandler}
