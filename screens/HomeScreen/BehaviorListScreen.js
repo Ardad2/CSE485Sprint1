@@ -6,6 +6,10 @@ import { addBehavior, removeBehavior } from '../../store/redux/behaviors';
 
 const data = [
   {
+    data: ["New"]}
+  ,
+
+  {
     title: "Keep",
     data: ["CESAR", "Journal", "Learn Something New", "Personal Fitness", "Warm Fuzzy (K)", "Learning", "Value Added Meeting", "Client Touch"]
   },
