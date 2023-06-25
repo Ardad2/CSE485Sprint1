@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, Modal, Image, SectionList, StatusBar} from 'react-native'
+import { View, Text, StyleSheet, TextInput, Button, Modal, Image, SectionList, StatusBar, TouchableOpaciy} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, dispatch , useDispatch} from 'react-redux';
 import { addBehavior, removeBehavior } from '../../store/redux/behaviors';
@@ -31,7 +31,7 @@ export default function BehaviorListScreen( {route, navigation} )
       <View style={styles.container_style} > 
              
 
-        <SectionList sections={data} renderItem = { ({item}) => <Text style={styles.item_style}> {item}</Text>}
+        <SectionList sections={data} renderItem = { ({item}) => (<TouchableOpacity onPress={() => console.log("Clicked on item")}> <Text style={styles.item_style}> {item}</Text></TouchableOpacity>)}
         renderSectionHeader={({section})  => <Text style={styles.section_style}> {section.title} </Text>} 
         keyExtractor={(item, index) => index} />
 
