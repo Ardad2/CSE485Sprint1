@@ -29,7 +29,7 @@ export default function BehaviorListScreen( {route, navigation} )
 {
 
   function startAddBehaviorHandler(behaviorName) {
-    navigation.navigate("BehaviorFormScreen", { behaviorName: behaviorName} )
+    navigation.navigate("BehaviorFormScreen", { behaviorName: behaviorName.item} )
     //console.log("Test");
    }
     return (
@@ -41,7 +41,7 @@ export default function BehaviorListScreen( {route, navigation} )
         renderItem = { ({item}) => ( 
           <TouchableOpacity onPress={
             //startAddBehaviorHandler(item.toString())
-            startAddBehaviorHandler
+            () => startAddBehaviorHandler({item})
           }> 
         <Text style={styles.item_style}> {item}</Text>
         </TouchableOpacity>

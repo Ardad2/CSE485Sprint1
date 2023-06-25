@@ -20,8 +20,11 @@ export default function BehaviorFormScreen( {route, navigation} )
         const behaviorList = useSelector((state) => state.behaviors.behaviors);
 
         const behaviorName = route.params.behaviorName;
+        const isNew = (behaviorName == "New")
 
     const [enteredBehaviorText, setEnteredBehaviorText] = useState('');
+
+    setEnteredBehaviorText(behaviorName);
 
     function behaviorInputHandler(enteredText) {
         setEnteredBehaviorText(enteredText);
@@ -44,7 +47,7 @@ export default function BehaviorFormScreen( {route, navigation} )
            }
          ));
 
-         navigation.goBack();
+         navigation.navigate("Home");
 
       }
 
@@ -54,15 +57,16 @@ export default function BehaviorFormScreen( {route, navigation} )
 
     return (
         <View style ={styles.inputContainer}>
-        <TextInput 
+          { isNew && (<TextInput 
         style={styles.textInput} 
-        placeholder="What did you do today?"
-        value={behaviorName}
-        //Note if it was goalInputHandler() it would get executed as soon as React starts.
+        placeholder={behaviorName}
+        defaultValue={behaviorName}
 
          onChangeText={behaviorInputHandler}
          value={enteredBehaviorText}
-         />
+         />)
+          }
+
          <View style={styles.buttonContainer}>
              <View style={styles.button} >
                 <Button title="Submit" onPress={addBehaviorHandler} color="black"/>
